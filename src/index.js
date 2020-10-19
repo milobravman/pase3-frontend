@@ -4,7 +4,11 @@ const URL = "http://localhost:3000"
 function fetchMonster() {
     fetch("http://localhost:3000/monsters")
     .then(res => res.json())
-    .then(console.log)
+    .then(monsters => {
+        monsters.forEach(monster => {
+            monsterList(monster)
+        })
+    })
 }
 
 function fetchParts() {
@@ -27,13 +31,23 @@ document.addEventListener("DOMContentLoaded", ()=> {
 })
 
 function renderPart(data) {
-    partsDiv = document.querySelector("#partsList")
+    let partsDiv = document.querySelector("#partsList")
     
     let partImage = document.createElement("img")
     partImage.src = data.image
 
-    partsDiv.appendChild(partImage)
+    partsDiv.appendChild(partImage)    
+}
 
+function monsterList (data) {
+    let monsterUL = document.querySelector("#monsterList")
+    let monsterLI = document.createElement('li')
+    monsterLI.textContent = data.name
+    monsterUL.appendChild(monsterLI)
     
-    
+    monsterLI.addEventListener('click', renderMonster)
+}
+
+function renderMonster () {
+    console.log('hi')
 }
