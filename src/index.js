@@ -45,9 +45,20 @@ function monsterList (data) {
     monsterLI.textContent = data.name
     monsterUL.appendChild(monsterLI)
     
-    monsterLI.addEventListener('click', renderMonster)
+    monsterLI.addEventListener('click', () => {
+        renderMonster(data)
+    })
 }
 
-function renderMonster () {
-    console.log('hi')
+function renderMonster (data) {
+
+    title = document.querySelector("#monster-name")
+    monsterImageDiv = document.querySelector("#assembleMoster")
+    let partsDiv = document.querySelectorAll("img")
+    partsDiv.forEach(part => {
+        let newClone = part.cloneNode()
+        monsterImageDiv.appendChild(newClone)
+    })
+    title.innerText = data.name
+
 }
