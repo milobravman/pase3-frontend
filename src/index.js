@@ -52,13 +52,20 @@ function monsterList (data) {
 
 function renderMonster (data) {
 
+    partsList = document.querySelector("#partsList")
+
     title = document.querySelector("#monster-name")
     monsterImageDiv = document.querySelector("#assembleMoster")
-    let partsDiv = document.querySelectorAll("img")
-    partsDiv.forEach(part => {
-        let newClone = part.cloneNode()
-        monsterImageDiv.appendChild(newClone)
-    })
+    let partsDiv = partsList.querySelectorAll("img")
+    if (monsterImageDiv.firstElementChild.innerHTML == ""){
+        partsDiv.forEach(part => {
+            let newClone = part.cloneNode()
+            monsterImageDiv.appendChild(newClone)
+        })
+    }
+    else {
+        console.log("no")
+    }
     title.innerText = data.name
 
 }
