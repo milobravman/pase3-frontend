@@ -1,6 +1,8 @@
 
 const URL = "http://localhost:3000"
 
+// Hey milo is pretty shitty actually
+
 
 function fetchMonster() {
     fetch("http://localhost:3000/monsters")
