@@ -7,7 +7,7 @@
   }
    */
   body {
-    background-color: #FFFBFF;
+    background-color: black;
     background-image: url("https://wallpaperaccess.com/full/1244577.jpg");
     background-size: cover;
     /* background-repeat: no-repeat; */
@@ -15,5 +15,10 @@
   
   .jumbotron{
     background-color: transparent;
+    color: orange;
+    text-align: center;
+  }
+
+  h3 {
     color: orange;
   }

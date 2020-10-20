@@ -31,14 +31,59 @@ document.addEventListener("DOMContentLoaded", ()=> {
 })
 
 function renderPart(data) {
-    let partsDiv = document.querySelector("#partsList")
     
-    let partImage = document.createElement("img")
-    partImage.className = "img-thumbnail"
-    partImage.src = data.image
-
-    partsDiv.appendChild(partImage)    
+    let first = document.querySelector('#first')
+    first.addEventListener('click', () => {
+        if(data.part_type == 'head'){
+        let partsDiv = document.querySelector("#partsList")
+        let partImage = document.createElement("img")
+        partImage.className = "img-thumbnail"
+        partImage.src = data.image
+        partsDiv.appendChild(partImage)   
+        }
+    })
+    let second = document.querySelector('#second')
+    second.addEventListener('click', () => {
+        if(data.part_type == 'chest'){
+        let partsDiv = document.querySelector("#partsList")
+        let partImage = document.createElement("img")
+        partImage.className = "img-thumbnail"
+        partImage.src = data.image
+        partsDiv.appendChild(partImage)   
+        }
+    })
+    let third = document.querySelector('#third')
+    third.addEventListener('click', () => {
+        if(data.part_type == 'legs'){
+        let partsDiv = document.querySelector("#partsList")
+        let partImage = document.createElement("img")
+        partImage.className = "img-thumbnail"
+        partImage.src = data.image
+        partsDiv.appendChild(partImage)   
+        }
+    })
+    let fourth = document.querySelector('#fourth')
+    fourth.addEventListener('click', () => {
+        if(data.part_type == 'arm'){
+        let partsDiv = document.querySelector("#partsList")
+        let partImage = document.createElement("img")
+        partImage.className = "img-thumbnail"
+        partImage.src = data.image
+        partsDiv.appendChild(partImage)   
+        }
+    })
+    let fifth = document.querySelector('#fifth')
+    fifth.addEventListener('click', () => {
+        if(data.part_type == 'arm'){
+        let partsDiv = document.querySelector("#partsList")
+        let partImage = document.createElement("img")
+        partImage.className = "img-thumbnail"
+        partImage.src = data.image
+        partsDiv.appendChild(partImage)   
+        }
+    })
 }
+
 
 function monsterList (data) {
     let monsterUL = document.querySelector("#monsterList")

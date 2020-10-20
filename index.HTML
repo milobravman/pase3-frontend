@@ -12,7 +12,7 @@
 
   </head>
   <body>
-    <div class="jumbotron text-center"><h1>Monster Mash<h1></div>
+    <div class="jumbotron"><h1>Monster Mash<h1></div>
       
     <!-- list of monster  -->
     <div class="container-fluid">
@@ -36,12 +36,32 @@
       </div>
       
       <!-- list of parts  -->
-      <div class="col-sm-2">
-        <h3 style="color: orange;">Parts</h3>
-        <div class="eighty" id = "partsList" style="overflow-y: auto; height: 500px; " >
+      <div class="col-sm-2 dropdown">
+        <h3 style="color: orange;" class="dropdown">Parts</h3>
+          <div class="dropdown" style="color: red;">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="caret"></span></button>
+            <ul  id="drop" class="dropdown-menu">
+              <li id="first">Head</li>
+              <li id="second">Chest</li>
+              <li id="third">Legs</li>
+              <li id="fourth">Left Arm</li>
+              <li id="fifth">Right Arm</li>
+            </ul>
+          </div>
+        <div id = "partsList" style="overflow-y: auto; height: 500px; " >
         </div>
       </div>
     </div>
       <script type="text/javascript" src="src/index.js" ></script>
     </body>
     </html>
+
+    <!-- <div class="dropdown">
+      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+      <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a href="#">HTML</a></li>
+        <li><a href="#">CSS</a></li>
+        <li><a href="#">JavaScript</a></li>
+      </ul>
+    </div> -->
