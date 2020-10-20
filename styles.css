@@ -10,22 +10,23 @@
     background-color: #FFFBFF;
   }
   
+  
+  .container {
+    margin-top: 30px!important;
+  }
+  
+  #binomial {
+    font-style: italic;
+  }
+  
+  img {
+    width: 200px!important;
+    height: 200px!important;
+  }
+  
   .page-header {
     text-align: center;
     font-size: 50px;
     background-color: #66049e;
     padding: 30px;
-  }
-  
-  .container {
-    margin-top: 30px!important;
-  }
-
-  #binomial {
-      font-style: italic;
-  }
-
-   img {
-      width: 200px!important;
-      height: 200px!important;
   }

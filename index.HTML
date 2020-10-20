@@ -10,34 +10,32 @@
   </head>
   <body>
     <div class="center"><h1 class="page-header">Monster Mash<h1></div>
-    <div id="main" class="ui grid">
+    <div id="main" class="ui grid"> <!-- Start Main content div -->
 
-      <div class="eight wide column center">
-        <div class="eighty">
-          <h3 id = monster-name>Monster's name</h3>
-          <div id="assembleMoster">
-            <div id="head"></div>
-            <div id="body"></div>
-            <div id="legs"></div>
-            <div id="leftArm"></div>
-            <div id="rightArm"></div>
-          </div>
+      <div> <!-- Monster Display section -->
+        <h3 id = monster-name>Monster's name</h3>
+        <div id="assembleMoster">
+          <div id="head-div"></div>
+          <div id="chest-div"></div>
+          <div id="legs-div"></div>
+          <div id="leftArm-div"></div>
+          <div id="rightArm-div"></div>
         </div>
       </div>
-
-      <div class="eight wide column center">
-        <div class="eighty" id = "partsList">
-        </div>
-      </div>
-
-      <div class="eight wide column center">
+      
+      <div>
         <h3>Choose a Monster</h3>
         <ul id="monsterList">
         </ul>
+        <button type="button" onclick="alert('To do')">Create a Monster</button>
       </div>
 
+      <div>
+        <div id = "partsList">
+        </div>
+      </div>
 
-    </div>
+    </div> <!-- End main content div -->
 
     <script type="text/javascript" src="src/index.js" ></script>
   </body>
