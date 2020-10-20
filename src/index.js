@@ -1,6 +1,7 @@
 
 const URL = "http://localhost:3000"
 
+
 function fetchMonster() {
     fetch("http://localhost:3000/monsters")
     .then(res => res.json())
@@ -28,6 +29,7 @@ function fetchParts() {
 document.addEventListener("DOMContentLoaded", ()=> {
     fetchMonster()
     fetchParts()
+    hideOrShow()
 })
 
 function renderPart(data) {
@@ -80,15 +82,19 @@ function renderMonster (data) {
         }
 
     })
+}
 
+let partsDisplay = false
 
-
-    // monsterImageDiv = document.querySelector("#assembleMoster")
-    // let partsDiv = partsList.querySelectorAll("img")
-    // partsDiv.forEach(part => {
-    //     let newClone = part.cloneNode()
-    //     monsterImageDiv.appendChild(newClone)
-    // })
-    // console.log("no")
-
+function hideOrShow() {
+    let togglePartsBtn = document.querySelector("#show-parts")
+    togglePartsBtn.addEventListener("click", () => {
+        partsDiv = document.querySelector("#partsList")
+        partsDisplay = !partsDisplay
+        if (partsDisplay){
+            partsDiv.style.display = "block";
+        }else{
+            partsDiv.style.display = "none"
+        }
+    })
 }
