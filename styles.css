@@ -1,31 +1,19 @@
-.eighty{
+/* /* .eighty{
     width: 80%;
     height: 100%;
     margin: 0px;
     padding: 10px;
     background-color: #55876B;
   }
-  
+   */
   body {
     background-color: #FFFBFF;
-  }
+    background-image: url("https://wallpaperaccess.com/full/1244577.jpg");
+    background-size: cover;
+    /* background-repeat: no-repeat; */
+    }
   
-  .page-header {
-    text-align: center;
-    font-size: 50px;
-    background-color: #66049e;
-    padding: 30px;
-  }
-  
-  .container {
-    margin-top: 30px!important;
-  }
-
-  #binomial {
-      font-style: italic;
-  }
-
-   img {
-      width: 200px!important;
-      height: 200px!important;
+  .jumbotron{
+    background-color: transparent;
+    color: orange;
   }

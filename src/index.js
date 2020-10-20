@@ -34,6 +34,7 @@ function renderPart(data) {
     let partsDiv = document.querySelector("#partsList")
     
     let partImage = document.createElement("img")
+    partImage.className = "img-thumbnail"
     partImage.src = data.image
 
     partsDiv.appendChild(partImage)    
@@ -41,13 +42,15 @@ function renderPart(data) {
 
 function monsterList (data) {
     let monsterUL = document.querySelector("#monsterList")
-    let monsterLI = document.createElement('li')
+    let monsterLI = document.createElement('div')
+    monsterLI.className = "item"
     monsterLI.textContent = data.name
+    monsterLI.style.color = 'orange'
     monsterUL.appendChild(monsterLI)
     
-    monsterLI.addEventListener('click', () => {
-        renderMonster(data)
-    })
+    // monsterLI.addEventListener('click', () => {
+    //     renderMonster(data)
+    // })
 }
 
 function renderMonster (data) {
