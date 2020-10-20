@@ -87,17 +87,18 @@ function renderPart(data) {
 }
 
 
+// The monsters Data gets passed through a forEach so
+// Data is one monster Obj
 function monsterList (data) {
     let monsterUL = document.querySelector("#monsterList")
-    let monsterLI = document.createElement('div')
-    monsterLI.className = "item"
+    let monsterLI = document.createElement('li')
     monsterLI.textContent = data.name
-    monsterLI.style.color = 'orange'
+    monsterLI.style.color = "red"
     monsterUL.appendChild(monsterLI)
     
-    // monsterLI.addEventListener('click', () => {
-    //     renderMonster(data)
-    // })
+    monsterLI.addEventListener('click', () => {
+        renderMonster(data)
+    })
 }
 
 function renderMonster (data) {
