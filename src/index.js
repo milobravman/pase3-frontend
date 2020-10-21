@@ -50,7 +50,7 @@ function createNewMonster() {
                 name: monsterName
             })
         }).then(r => r.json())
-        .then(console.log)
+        .then(r => monsterList(r))
 
     })
 }
@@ -109,18 +109,38 @@ function renderPart(data) {
     })
 }
 
-
 // The monsters Data gets passed through a forEach so
 // Data is one monster Obj
 function monsterList (data) {
     let monsterUL = document.querySelector("#monsterList")
     let monsterLI = document.createElement('li')
+    let deleteBTN = document.createElement("span")
+
+
     monsterLI.textContent = data.name
     monsterLI.style.color = "red"
     monsterUL.appendChild(monsterLI)
     
     monsterLI.addEventListener('click', () => {
         renderMonster(data)
+    })
+
+    monsterUL.appendChild(deleteBTN)
+    deleteBTN.innerText = "X"
+    deleteBTN.style.color = "red"
+
+    deleteBTN.addEventListener('click', () => {
+        deleteMonster(data)
+    })
+}
+
+function deleteMonster (data) {
+    fetch(`http://localhost:3000/monsters/${data.id}`, {
+        method: "DELETE",
+        headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        }
     })
 }
 
