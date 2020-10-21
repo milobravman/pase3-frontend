@@ -31,59 +31,45 @@ function fetchParts() {
 document.addEventListener("DOMContentLoaded", ()=> {
     fetchMonster()
     fetchParts()
-    hideOrShow()
+    // hideOrShow()
 })
 
 function renderPart(data) {
-    
-    let first = document.querySelector('#first')
-    first.addEventListener('click', () => {
-        if(data.part_type == 'head'){
+    function listParts () {
         let partsDiv = document.querySelector("#partsList")
         let partImage = document.createElement("img")
         partImage.className = "img-thumbnail"
         partImage.src = data.image
-        partsDiv.appendChild(partImage)   
+        partsDiv.appendChild(partImage)
+    }
+    let first = document.querySelector('#first')
+    first.addEventListener('click', () => {
+        if(data.part_type == 'head'){
+        listParts()  
         }
     })
     let second = document.querySelector('#second')
     second.addEventListener('click', () => {
         if(data.part_type == 'chest'){
-        let partsDiv = document.querySelector("#partsList")
-        let partImage = document.createElement("img")
-        partImage.className = "img-thumbnail"
-        partImage.src = data.image
-        partsDiv.appendChild(partImage)   
+        listParts()   
         }
     })
     let third = document.querySelector('#third')
     third.addEventListener('click', () => {
         if(data.part_type == 'legs'){
-        let partsDiv = document.querySelector("#partsList")
-        let partImage = document.createElement("img")
-        partImage.className = "img-thumbnail"
-        partImage.src = data.image
-        partsDiv.appendChild(partImage)   
+        listParts() 
         }
     })
     let fourth = document.querySelector('#fourth')
     fourth.addEventListener('click', () => {
-        if(data.part_type == 'arm'){
-        let partsDiv = document.querySelector("#partsList")
-        let partImage = document.createElement("img")
-        partImage.className = "img-thumbnail"
-        partImage.src = data.image
-        partsDiv.appendChild(partImage)   
+        if(data.part_type == 'Rarm'){
+        listParts() 
         }
     })
     let fifth = document.querySelector('#fifth')
     fifth.addEventListener('click', () => {
-        if(data.part_type == 'arm'){
-        let partsDiv = document.querySelector("#partsList")
-        let partImage = document.createElement("img")
-        partImage.className = "img-thumbnail"
-        partImage.src = data.image
-        partsDiv.appendChild(partImage)   
+        if(data.part_type == 'Larm'){
+        listParts()   
         }
     })
 }
@@ -117,15 +103,15 @@ function renderMonster (data) {
 
     data.parts.forEach(part => {
         if (part.part_type == "chest"){
-            chest.innerHTML = `<img src=${part.image}>`
+            chest.innerHTML = `<img style="height:200px; width:200px;" src=${part.image}>`
         } else if (part.part_type == "legs") {
-            legs.innerHTML = `<img src=${part.image}>`
+            legs.innerHTML = `<img style = "height:200px; width:50px;"src=${part.image}>`
         }else if (part.part_type == "head") {
-            head.innerHTML = `<img src=${part.image}>`
+            head.innerHTML = `<img style = "height:100px; width:100px;" src=${part.image}>`
         }else if (part.part_type == "Larm") {
-            left_arm.innerHTML = `<img src=${part.image}>`
+            left_arm.innerHTML = `<img style = "height:60px; width:200px;" src=${part.image}>`
         }else if (part.part_type == "Rarm") {
-            right_arm.innerHTML = `<img src=${part.image}>`
+            right_arm.innerHTML = `<img style = "height:60px; width:200px;" src=${part.image}>`
         }else {
             console.log("error")
         }
@@ -133,17 +119,16 @@ function renderMonster (data) {
     })
 }
 
-let partsDisplay = false
+// let partsDisplay = false
 
-function hideOrShow() {
-    let togglePartsBtn = document.querySelector("#show-parts")
-    togglePartsBtn.addEventListener("click", () => {
-        partsDiv = document.querySelector("#partsList")
-        partsDisplay = !partsDisplay
-        if (partsDisplay){
-            partsDiv.style.display = "block";
-        }else{
-            partsDiv.style.display = "none"
-        }
-    })
-}
+// function hideOrShow() {
+//     let togglePartsBtn = document.querySelector("#show-parts")
+//     togglePartsBtn.addEventListener("click", () => {
+//         partsDiv = document.querySelector("#partsList")
+//         partsDisplay = !partsDisplay
+//         if (partsDisplay){
+//             partsDiv.style.display = "block";
+//         }else{
+//             partsDiv.style.display = "none"
+//         }
+//     })

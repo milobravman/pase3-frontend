@@ -6,7 +6,7 @@
     /* background-repeat: no-repeat; */
     }
   
-  .jumbotron{
+  .jumbotron {
     background-color: transparent;
     color: orange;
     text-align: center;
@@ -15,3 +15,16 @@
   h3 {
     color: orange;
   }
+
+  .grid-container {
+    display: inline-grid;
+    grid-template-columns: auto auto auto;
+    background-color: #2196F3;
+  }
+  
+  .grid-item {
+    text-align: center;
+  }
+
+
+  
