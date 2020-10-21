@@ -147,3 +147,5 @@ function hideOrShow() {
         }
     })
 }
+
+//adam forcing me to comment my code :(
