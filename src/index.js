@@ -119,6 +119,7 @@ function renderMonster (data) {
     })
 }
 
+
 // let partsDisplay = false
 
 // function hideOrShow() {
