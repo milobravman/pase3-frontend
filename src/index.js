@@ -29,8 +29,31 @@ function fetchParts() {
 document.addEventListener("DOMContentLoaded", ()=> {
     fetchMonster()
     fetchParts()
+    createNewMonster()
     hideOrShow()
 })
+
+function createNewMonster() {
+    document.querySelector("#createMonsterBtn").addEventListener("submit", (e)=>{
+        e.preventDefault()
+        formHTML = e.target
+        let monsterName = formHTML.querySelector("#Mname").value
+        //let toPost = `name: ${monsterName}`
+        //console.log(toPost)
+
+
+        fetch("http://localhost:3000/monsters", {
+            method: 'POST',
+            mode: 'cors',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                name: monsterName
+            })
+        }).then(r => r.json())
+        .then(console.log)
+
+    })
+}
 
 function renderPart(data) {
     
@@ -134,9 +157,9 @@ function renderMonster (data) {
 let partsDisplay = false
 
 function hideOrShow() {
-    let togglePartsBtn = document.querySelector("#show-parts")
+    let togglePartsBtn = document.querySelector("#create-monster")
     togglePartsBtn.addEventListener("click", () => {
-        partsDiv = document.querySelector("#partsList")
+        partsDiv = document.querySelector("#createMonsterBtn")
         partsDisplay = !partsDisplay
         if (partsDisplay){
             partsDiv.style.display = "block";
