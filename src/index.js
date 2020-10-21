@@ -105,7 +105,7 @@ function renderMonster (data) {
         if (part.part_type == "chest"){
             chest.innerHTML = `<img style="height:200px; width:200px;" src=${part.image}>`
         } else if (part.part_type == "legs") {
-            legs.innerHTML = `<img style = "height:200px; width:50px;"src=${part.image}>`
+            legs.innerHTML = `<img style = "height:200px; width:60px;"src=${part.image}>`
         }else if (part.part_type == "head") {
             head.innerHTML = `<img style = "height:100px; width:100px;" src=${part.image}>`
         }else if (part.part_type == "Larm") {
