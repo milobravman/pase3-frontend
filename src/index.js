@@ -120,16 +120,17 @@ function renderMonster (data) {
 }
 
 
-// let partsDisplay = false
+let partsDisplay = false
 
-// function hideOrShow() {
-//     let togglePartsBtn = document.querySelector("#show-parts")
-//     togglePartsBtn.addEventListener("click", () => {
-//         partsDiv = document.querySelector("#partsList")
-//         partsDisplay = !partsDisplay
-//         if (partsDisplay){
-//             partsDiv.style.display = "block";
-//         }else{
-//             partsDiv.style.display = "none"
-//         }
-//     })
+function hideOrShow() {
+    let togglePartsBtn = document.querySelector("#show-parts")
+    togglePartsBtn.addEventListener("click", () => {
+        partsDiv = document.querySelector("#partsList")
+        partsDisplay = !partsDisplay
+        if (partsDisplay){
+            partsDiv.style.display = "block";
+        }else{
+            partsDiv.style.display = "none"
+        }
+    })
+}
