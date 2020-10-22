@@ -31,9 +31,14 @@
       </div>
       
       <!-- showing the monster  -->
-      <div class="col-sm-8 text-center">
+      <div class="col-sm-8 text-center" id = "monster-name-outer">
+        <h3 id = monster-name style="color: orange;">Monster's name</h3>
+        <form style="display: none;" id = Edit-MonsterBtn>
+          <label for="Mname" style="color: crimson;">New Monster Name:</label>
+          <input type="text" id="New-Name" name="Mname" value="">
+          <input type="submit" value="Submit">
+        </form>
         <div id = monster-show>
-          <h3 id = monster-name style="color: orange;">Monster's name</h3>
           <div id="assembleMoster" class="grid-container">
             <div class="grid-item"></div>
             <div id="head-div" class="grid-item"></div>

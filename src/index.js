@@ -200,24 +200,56 @@ function renderMonster (data) {
         document.querySelector("#edit-monster").remove();
     }
 
-    MonsterDivP = document.querySelector("#monster-show")
-    MonsterDivC = document.querySelector("#assembleMoster")
+    MonsterDivP = document.querySelector("#monster-name-outer")
+    MonsterDivC = document.querySelector("#monster-show")
+
     editBTN = document.createElement("button")
     editBTN.id = "edit-monster"
     editBTN.innerText = `change ${data.name}'s name`
-    MonsterDivP.insertBefore(editBTN, MonsterDivC)
+
+    MonsterDivP.insertBefore(editBTN, MonsterDivC);
+    //MonsterDivP.appendChild(editBTN)
 
     editBTN.addEventListener("click", (e) => {
-        editHandler(e, data)
+        editFormToggle(e, data)
     })
 
     //<button type = "button" id = edit-monster>E-M</button>
 
 }
 
+function editFormToggle(e, data) {
+
+    oldChild = document.querySelector("#edit-monster")
+    form = document.querySelector("#Edit-MonsterBtn")
+    oldChild.remove();
+    form.style.display = "block"
+    form.addEventListener ("submit", (e) => {
+        editHandler(e,data)
+    })
+    
+
+
+}
+
 function editHandler(event, data) {
-    console.log(event)
+    event.preventDefault()
+
+    form = document.querySelector("#Edit-MonsterBtn")
+    form.style.display = "none"
+
     console.log(data)
+    console.log(event.target.querySelector("#New-Name").value)
+
+    // fetch(`http://localhost:3000/monsters${data.id}`, {
+    //     method: 'PATCH',
+    //     headers: {'Content-Type': 'application/json'},
+    //     body: JSON.stringify({
+    //         name: monsterName
+    //     })
+    // }).then(r => r.json())
+    // .then(r => monsterList(r))
+
 }
 
 
