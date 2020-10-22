@@ -22,14 +22,13 @@ function fetchParts() {
     })
 }
 
-//fetch("http://localhost:3000/parts")
-//.then(res => res.json())
-//.then(partsData => renderParts(partsData))
 
 document.addEventListener("DOMContentLoaded", ()=> {
     fetchMonster()
     fetchParts()
     createNewMonster()
+    createNewPart()
+    //play hide and seek with the forms
     hideOrShow()
 })
 
@@ -55,14 +54,50 @@ function createNewMonster() {
     })
 }
 
+function createNewPart() {
+    document.querySelector("#createPartBtn").addEventListener("submit", (e)=>{
+        e.preventDefault()
+        formHTML = e.target
+        let partName = formHTML.querySelector("#Pname").value
+        let partType = formHTML.querySelector("#Ptype").value
+        let attackPower = formHTML.querySelector("#Apower").value
+        let health = formHTML.querySelector("#health").value
+        let image = formHTML.querySelector("#image").value
+
+        fetch("http://localhost:3000/parts", {
+            method: 'POST',
+            mode: 'cors',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                name: partName,
+                part_type: partType,
+                attack_power: attackPower,
+                health: health,
+                image: image,
+            })
+        }).then(r => r.json())
+        .then(r => renderPart(r))
+    })
+}
+
 function renderPart(data) {
+    
     function listParts () {
         let partsDiv = document.querySelector("#partsList")
         let partImage = document.createElement("img")
+        let deleteButton = document.createElement("span")
         partImage.className = "img-thumbnail"
         partImage.src = data.image
         partsDiv.appendChild(partImage)
+        partsDiv.appendChild(deleteButton)
+        deleteButton.innerText = "X"
+        deleteButton.style.color = "red"
+        deleteButton.addEventListener('click', (e) => {
+            // confirm (`Do you want to delete ${data.name}`)
+            deletePart(data, e)
+        })
     }
+
     let first = document.querySelector('#first')
     first.addEventListener('click', () => {
         if(data.part_type == 'head'){
@@ -142,6 +177,28 @@ function deleteMonster (data, event) {
     })
 }
 
+function deletePart (data, event) {
+    //delete from backend
+    fetch(`http://localhost:3000/parts/${data.id}`, {
+        method: "DELETE",
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+
+    
+
+    //delete from frontend
+    listOfParts = document.querySelector("#partsList")
+    L = listOfParts.querySelectorAll("img")
+    L.forEach(img => {
+        if (img.src == data.image) {
+            img.remove()
+            event.target.remove()
+        }
+    })
+}
+
 function renderMonster (data) {
     
     title = document.querySelector("#monster-name")
@@ -177,6 +234,7 @@ function renderMonster (data) {
 let partsDisplay = false
 
 function hideOrShow() {
+    //Hide and seek for create monster form
     let togglePartsBtn = document.querySelector("#create-monster")
     togglePartsBtn.addEventListener("click", () => {
         partsDiv = document.querySelector("#createMonsterBtn")
@@ -185,6 +243,17 @@ function hideOrShow() {
             partsDiv.style.display = "block";
         }else{
             partsDiv.style.display = "none"
+        }
+    })
+    //Hide and seek for make new part form
+    let toggleMakePartsBtn = document.querySelector("#create-part")
+    toggleMakePartsBtn.addEventListener("click", () => {
+        partDiv = document.querySelector("#createPartBtn")
+        partsDisplay = !partsDisplay
+        if (partsDisplay){
+            partDiv.style.display = "block";
+        }else{
+            partDiv.style.display = "none"
         }
     })
 }

@@ -21,10 +21,33 @@
         <h3 style="color: orange;">Choose a Monster</h3>
         <div>
           <ul id="monsterList"></ul>
+          <!-- button and from to make new monster -->
           <button type="button" id = create-monster>Create a Monster</button>
           <form style="display: none;" id= createMonsterBtn>
             <label for="Mname" style="color: crimson;">Monster Name:</label>
             <input type="text" id="Mname" name="Mname" value="">
+            <input type="submit" value="Submit">
+          </form>
+          <!-- button and form to make new parts -->
+          <button type="button" id = create-part>Make a New Part</button>
+          <form style="display: none;" id= createPartBtn>
+            <label for="Pname" style="color: crimson;">Part Name:</label>
+            <input type="text" id="Pname" name="Pname" value="">
+            <label for="Ptype" style="color: crimson;">Part Type:</label>
+              <select id="Ptype" name="Ptype">
+                <option value="blank"></option>
+                <option value="head">Head</option>
+                <option value="chest">Chest</option>
+                <option value="legs">Legs</option>
+                <option value="Rarm">Right Arm</option>
+                <option value="Larm">Left Arm</option>
+              </select>
+            <label for="Apower" style="color: crimson;">Attak Power:</label>
+            <input type="number" name="Apower" id="Apower">
+            <label for="health" style="color: crimson;">Health:</label>
+            <input type="number" name="health" id="health">
+            <label for="image" style="color: crimson;">Image URL:</label>
+            <input type="url" name="image" id="image">
             <input type="submit" value="Submit">
           </form>
         </div>
@@ -59,12 +82,13 @@
               <li id="first">Head</li>
               <li id="second">Chest</li>
               <li id="third">Legs</li>
-              <li id="fourth">Left Arm</li>
-              <li id="fifth">Right Arm</li>
+              <li id="fourth">Right Arm</li>
+              <li id="fifth">Left Arm</li>
             </ul>
           </div>
         <div id = "partsList" style="overflow-y: auto; height: 500px; " >
         </div>
+        
       </div>
     </div>
       <script type="text/javascript" src="src/index.js" ></script>
