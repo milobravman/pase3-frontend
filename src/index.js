@@ -147,14 +147,24 @@ function renderMonster (data) {
     title = document.querySelector("#monster-name")
     title.innerText = data.name
 
+    parts = data.parts
+
     let head = document.querySelector("#head-div")
     let chest = document.querySelector("#chest-div")
     let legs = document.querySelector("#legs-div")
     let left_arm = document.querySelector("#leftArm-div")
     let right_arm = document.querySelector("#rightArm-div")
-    console.log(data.parts.length)
 
-    //let defaultURL =  "https://www.bondministries.com/v3/assets/ckeditor/plugins/sitetackletemplates/image-placeholder.jpg"
+    head.innerHTML = ""
+    chest.innerHTML = ""
+    legs.innerHTML = ""
+    left_arm.innerHTML = ""
+    right_arm.innerHTML = ""
+
+    //console.log(data.parts)
+    //console.log(data.parts.length)
+
+    let defaultURL =  "https://www.bondministries.com/v3/assets/ckeditor/plugins/sitetackletemplates/image-placeholder.jpg"
     data.parts.forEach(part => {
         if (part.part_type == "chest"){
             chest.innerHTML = `<img style="height:200px; width:200px;" src=${part.image}>`
@@ -171,6 +181,23 @@ function renderMonster (data) {
         }
 
     })
+
+    if (head.innerHTML == "") {
+        head.innerHTML = `<img style = "height:100px; width:100px;" src=${defaultURL}>`
+    }
+    if (chest.innerHTML == "") {
+        chest.innerHTML = `<img style = "height:200px; width:200px;" src=${defaultURL}>`
+    }
+    if (legs.innerHTML == "") {
+        legs.innerHTML = `<img style = "height:200px; width:60px;" src=${defaultURL}>`
+    }
+    if (left_arm.innerHTML == "") {
+        left_arm.innerHTML = `<img style = "height:60px; width:200px;" src=${defaultURL}>`
+    }
+    if (right_arm.innerHTML == "") {
+        right_arm.innerHTML = `<img style = "height:60px; width:200px;" src=${defaultURL}>`
+    }
+
 }
 
 
