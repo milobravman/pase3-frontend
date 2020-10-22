@@ -147,8 +147,6 @@ function renderMonster (data) {
     title = document.querySelector("#monster-name")
     title.innerText = data.name
 
-    parts = data.parts
-
     let head = document.querySelector("#head-div")
     let chest = document.querySelector("#chest-div")
     let legs = document.querySelector("#legs-div")
@@ -198,6 +196,28 @@ function renderMonster (data) {
         right_arm.innerHTML = `<img style = "height:60px; width:200px;" src=${defaultURL}>`
     }
 
+    if (document.querySelector("#edit-monster")){
+        document.querySelector("#edit-monster").remove();
+    }
+
+    MonsterDivP = document.querySelector("#monster-show")
+    MonsterDivC = document.querySelector("#assembleMoster")
+    editBTN = document.createElement("button")
+    editBTN.id = "edit-monster"
+    editBTN.innerText = `change ${data.name}'s name`
+    MonsterDivP.insertBefore(editBTN, MonsterDivC)
+
+    editBTN.addEventListener("click", (e) => {
+        editHandler(e, data)
+    })
+
+    //<button type = "button" id = edit-monster>E-M</button>
+
+}
+
+function editHandler(event, data) {
+    console.log(event)
+    console.log(data)
 }
 
 
