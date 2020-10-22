@@ -238,17 +238,26 @@ function editHandler(event, data) {
     form = document.querySelector("#Edit-MonsterBtn")
     form.style.display = "none"
 
-    console.log(data)
-    console.log(event.target.querySelector("#New-Name").value)
+    console.log(data.name)
+    
 
-    // fetch(`http://localhost:3000/monsters${data.id}`, {
-    //     method: 'PATCH',
-    //     headers: {'Content-Type': 'application/json'},
-    //     body: JSON.stringify({
-    //         name: monsterName
-    //     })
-    // }).then(r => r.json())
-    // .then(r => monsterList(r))
+    fetch(`http://localhost:3000/monsters/${data.id}`, {
+        method: 'PATCH',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            name: event.target.querySelector("#New-Name").value,
+            id: parseInt(data.id)
+        })
+    })
+
+    // Replace in the front end
+
+    nodeList = document.querySelector("#monsterList").querySelectorAll("li")
+    nodeList.forEach(li => {
+        if (li.innerText == data.name){
+            li.innerText = event.target.querySelector("#New-Name").value
+        }
+    })
 
 }
 
