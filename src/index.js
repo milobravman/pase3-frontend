@@ -115,17 +115,29 @@ function monsterList (data) {
     deleteBTN.innerText = "X"
     deleteBTN.style.color = "red"
 
-    deleteBTN.addEventListener('click', () => {
-        deleteMonster(data)
+    deleteBTN.addEventListener('click', (e) => {
+        deleteMonster(data, e)
     })
 }
 
-function deleteMonster (data) {
+function deleteMonster (data, event) {
+    //delete from backend
     fetch(`http://localhost:3000/monsters/${data.id}`, {
         method: "DELETE",
         headers: {
             'Content-Type': 'application/json'
-            // 'Content-Type': 'application/x-www-form-urlencoded',
+        }
+    })
+
+    
+
+    //delete from frontend
+    listOfMonsters = document.querySelector("#monsterList")
+    L = listOfMonsters.querySelectorAll("li")
+    L.forEach(li => {
+        if (li.innerText == data.name) {
+            li.remove()
+            event.target.remove()
         }
     })
 }
@@ -140,8 +152,9 @@ function renderMonster (data) {
     let legs = document.querySelector("#legs-div")
     let left_arm = document.querySelector("#leftArm-div")
     let right_arm = document.querySelector("#rightArm-div")
+    console.log(data.parts.length)
 
-
+    //let defaultURL =  "https://www.bondministries.com/v3/assets/ckeditor/plugins/sitetackletemplates/image-placeholder.jpg"
     data.parts.forEach(part => {
         if (part.part_type == "chest"){
             chest.innerHTML = `<img style="height:200px; width:200px;" src=${part.image}>`
