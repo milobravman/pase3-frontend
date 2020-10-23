@@ -316,6 +316,8 @@ function editHandler(event, data) {
         }
     })
 
+    document.querySelector("#monster-name").innerText = event.target.querySelector("#New-Name").value
+
 }
 
 
