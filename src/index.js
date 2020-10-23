@@ -209,9 +209,17 @@ function renderMonster (data) {
     let legs = document.querySelector("#legs-div")
     let left_arm = document.querySelector("#leftArm-div")
     let right_arm = document.querySelector("#rightArm-div")
-    console.log(data.parts.length)
 
-    //let defaultURL =  "https://www.bondministries.com/v3/assets/ckeditor/plugins/sitetackletemplates/image-placeholder.jpg"
+    head.innerHTML = ""
+    chest.innerHTML = ""
+    legs.innerHTML = ""
+    left_arm.innerHTML = ""
+    right_arm.innerHTML = ""
+
+    //console.log(data.parts)
+    //console.log(data.parts.length)
+
+    let defaultURL =  "https://www.bondministries.com/v3/assets/ckeditor/plugins/sitetackletemplates/image-placeholder.jpg"
     data.parts.forEach(part => {
         if (part.part_type == "chest"){
             chest.innerHTML = `<img style="height:200px; width:200px;" src=${part.image}>`
@@ -228,6 +236,86 @@ function renderMonster (data) {
         }
 
     })
+
+    if (head.innerHTML == "") {
+        head.innerHTML = `<img style = "height:100px; width:100px;" src=${defaultURL}>`
+    }
+    if (chest.innerHTML == "") {
+        chest.innerHTML = `<img style = "height:200px; width:200px;" src=${defaultURL}>`
+    }
+    if (legs.innerHTML == "") {
+        legs.innerHTML = `<img style = "height:200px; width:60px;" src=${defaultURL}>`
+    }
+    if (left_arm.innerHTML == "") {
+        left_arm.innerHTML = `<img style = "height:60px; width:200px;" src=${defaultURL}>`
+    }
+    if (right_arm.innerHTML == "") {
+        right_arm.innerHTML = `<img style = "height:60px; width:200px;" src=${defaultURL}>`
+    }
+
+    if (document.querySelector("#edit-monster")){
+        document.querySelector("#edit-monster").remove();
+    }
+
+    MonsterDivP = document.querySelector("#monster-name-outer")
+    MonsterDivC = document.querySelector("#monster-show")
+
+    editBTN = document.createElement("button")
+    editBTN.id = "edit-monster"
+    editBTN.innerText = `change ${data.name}'s name`
+
+    MonsterDivP.insertBefore(editBTN, MonsterDivC);
+    //MonsterDivP.appendChild(editBTN)
+
+    editBTN.addEventListener("click", (e) => {
+        editFormToggle(e, data)
+    })
+
+    //<button type = "button" id = edit-monster>E-M</button>
+
+}
+
+function editFormToggle(e, data) {
+
+    oldChild = document.querySelector("#edit-monster")
+    form = document.querySelector("#Edit-MonsterBtn")
+    oldChild.remove();
+    form.style.display = "block"
+    form.addEventListener ("submit", (e) => {
+        editHandler(e,data)
+    })
+    
+
+
+}
+
+function editHandler(event, data) {
+    event.preventDefault()
+
+    form = document.querySelector("#Edit-MonsterBtn")
+    form.style.display = "none"
+
+    console.log(data.name)
+    
+
+    fetch(`http://localhost:3000/monsters/${data.id}`, {
+        method: 'PATCH',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            name: event.target.querySelector("#New-Name").value,
+            id: parseInt(data.id)
+        })
+    })
+
+    // Replace in the front end
+
+    nodeList = document.querySelector("#monsterList").querySelectorAll("li")
+    nodeList.forEach(li => {
+        if (li.innerText == data.name){
+            li.innerText = event.target.querySelector("#New-Name").value
+        }
+    })
+
 }
 
 
